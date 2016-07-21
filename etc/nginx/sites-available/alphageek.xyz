@@ -1,0 +1,27 @@
+upstream alphageek_xyz {
+    include /etc/nginx/conf.d/alphageek_upstream;
+}
+
+server {
+    listen 80;
+    server_name alphageek.xyz www.alphageek.xyz secure.alphageek.xyz www.secure.alphageek.xyz;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name alphageek.xyz www.alphageek.xyz secure.alphageek.xyz www.secure.alphageek.xyz;
+    ssl_certificate /etc/letsencrypt/live/alphageek.xyz/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/alphageek.xyz/privkey.pem;
+    ssl_dhparam /etc/ssl/certs/dh2048.pem;
+
+    include /etc/nginx/conf.d/ssl_params;
+    include /etc/nginx/conf.d/well_known;
+    include /etc/nginx/conf.d/zoho_verify;
+    include /etc/nginx/conf.d/static_root;
+
+    location / {
+        include /etc/nginx/conf.d/proxy_params;
+        proxy_pass http://alphageek_xyz;
+    }
+}

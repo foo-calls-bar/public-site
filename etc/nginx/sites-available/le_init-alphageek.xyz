@@ -1,0 +1,13 @@
+server {
+    listen 80;
+    server_name alphageek.xyz www.alphageek.xyz secure.alphageek.xyz www.secure.alphageek.xyz;
+    root /usr/share/nginx/letsencrypt;
+
+    location ^~ /.well-known {
+        allow all;
+    }
+
+#    location / {
+#        return 301 https://$host$request_uri;
+#    }
+}

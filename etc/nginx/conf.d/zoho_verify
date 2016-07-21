@@ -1,0 +1,4 @@
+location /zohoverify/ {
+    root /srv/agcs/html;
+    allow all;
+}

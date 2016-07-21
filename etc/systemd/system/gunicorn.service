@@ -1,0 +1,14 @@
+[Unit]
+PIDFile=/var/tmp/gunicorn.pid
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=django
+Group=www-data
+WorkingDirectory=/home/django/agcs
+ExecStart=/bin/bash -c 'source /home/django/.virtualenvs/agcs/bin/activate && /home/django/.virtualenvs/agcs/bin/gunicorn -c /home/django/agcs/gunicorn_conf.py agcs.wsgi:application'
+ExecStop=/bin/kill -s TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target

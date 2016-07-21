@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=w3.org/TR/html4/loose.dtd">
+<html lang=3D"en">
+<head>
+  <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+  <meta name=3D"viewport" content=3D"initial-scale=3D1.0">
+  <meta name=3D"format-detection" content=3D"telephone=3Dno">
+  <style type=3D"text/css">
+    table {
+      border-spacing:0;
+    }
+
+    table td {
+      border-collapse:collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: left;
+    }
+
+    .item {
+        color: red;
+        font-weight: bold;
+    }
+  </style>
+</head>
+  <body>
+    <table style="border-spacing: 0; border-collapse:collapse; border: 1px solid black; padding: 5px; text-align: left;">
+      <tr>
+        <td class="item" style="color: #FF0000; font-weight: bold; border-collapse:collapse; border: 1px solid black; padding: 5px; text-align: left;">Full Name</td>
+        <td style="border-collapse:collapse; border: 1px solid black; padding: 5px; text-align: left;">{{ name }}</td>
+      </tr>
+      <tr>
+        <td class="item" style="color: #FF0000; font-weight: bold; border-collapse:collapse; border: 1px solid black; padding: 5px; text-align: left;">Phone Number</td>
+        <td style="border-collapse:collapse; border: 1px solid black; padding: 5px; text-align: left;">
+          <a href="tel:{{ phone|urlencode }}" target="_blank">{{ phone }}</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="item" style="color: #FF0000; font-weight: bold; border-collapse:collapse; border: 1px solid black; padding: 5px; text-align: left;">Email Address</td>
+        <td style="border-collapse:collapse; border: 1px solid black; padding: 5px; text-align: left;">
+          <a href="mailto:{{ email }}" target="_blank">{{ email }}</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="item" style="color: #FF0000; font-weight: bold; border-collapse:collapse; border: 1px solid black; padding: 5px; text-align: left;">Comment</td>
+        <td style="border-collapse:collapse; border: 1px solid black; padding: 5px; text-align: left;">{{ comment }}</td>
+      </tr>
+    </table>
+  </body>
+</html>

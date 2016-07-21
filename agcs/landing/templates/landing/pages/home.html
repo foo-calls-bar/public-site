@@ -1,0 +1,17 @@
+{% extends 'landing/base.html' %}
+{% load staticfiles %}
+{% block header %}
+{% include "landing/parts/header.html" with title="Computer Services" %}
+    <div class="container-fluid">
+      <div class="jumbotron" style="padding-bottom: 75px;">
+        <div class="row">
+          <div class="col-lg-12">
+            <img class="img-responsive" src="{% static 'assets/img/logo.png' %}" alt="AGCS">
+          </div>
+        <p class="lead">In-Shop • On-Site • Remote</p>
+      </div>
+      </div>
+    </div>
+{% endblock header %}
+{% block content %}{% endblock content %}
+{# margin: 0 auto 0; #}

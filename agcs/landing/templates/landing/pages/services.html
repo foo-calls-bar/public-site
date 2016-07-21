@@ -1,0 +1,53 @@
+{% extends 'landing/base.html' %}
+{% load staticfiles %}
+{% load landing_utils %}
+{% load cache %}
+{% block page_extra_head %}{% endblock page_extra_head %}
+{% block header %}
+  {% include "landing/parts/header.html" %}
+{% endblock header %}
+{% block content %}
+  {% with services='Backup Solutions,Custom Builds,Lessons,Mobile Devices,Networking,VPN Solutions,Planning/Consulting,New Device Setup,Viruses/Spyware,Maintenance,Repairs'|split:',' %}
+  <div class="container">
+    <div class="page-header" id="banner">
+      <div class="row">
+        <div class="col-lg-8 col-md-7 col-sm-6">
+          <h1>What we do</h1>
+          <p class="lead"></p>
+        </div> <!-- col-lg-8 col... -->
+        <div class="col-lg-4 col-md-5 col-sm-6">
+          <div class="sponsor">
+          </div> <!-- sponsor -->
+        </div> <!-- col-lg-4 col... -->
+      </div> <!-- row -->
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-4">
+        {% cache 60 services_toc %}
+          <div class="list-group table-of-contents">
+          {% for service in services %}
+            <a class="list-group-item" href="#{{ service|mkattribute }}">{{ service }}</a>
+          {% endfor %}
+          </div> <!-- table-of-contents -->
+        {% endcache %}
+        </div> <!-- col-lg-3 col... -->
+      </div> <!-- row -->
+    </div> <!-- page-header -->
+    {% for service in services %}
+      {% with service|mkattribute as service_id %}
+    <div class="clearfix">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-4">
+          <div class="page-header">
+            <h2 id="{{ service_id }}">{{ service }}</h2>
+          </div> <!-- page-header -->
+          <div class="bs-component service">
+            {% include "landing/services/"|add:service_id|add:".html" %}
+          </div> <!-- bs-component -->
+        </div> <!-- col-lg-12 -->
+      </div> <!-- row -->
+    </div><!-- clearfix -->
+      {% endwith %}
+    {% endfor %}
+  </div> <!-- container -->
+  {% endwith %}
+{% endblock content %}

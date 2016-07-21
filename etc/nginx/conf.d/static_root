@@ -1,0 +1,10 @@
+location /static/ {
+    root /srv/agcs/assets;
+    add_header Cache-Control "public";
+    expires 1M;
+    access_log off;
+
+    location ~* \.(?:css|js)$ {
+        expires 1h;
+    }
+}
