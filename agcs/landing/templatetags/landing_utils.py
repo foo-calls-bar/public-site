@@ -7,10 +7,9 @@ from django.template.defaultfilters import stringfilter
 from django.template.base import token_kwargs
 from django.utils.html import mark_safe, html_safe, format_html, escapejs, escape, force_text,strip_spaces_between_tags
 from django.contrib.staticfiles import finders
-from css_html_js_minify.minify import prepare
-from css_html_js_minify import (
-    html_minify, js_minify, css_minify,
-)
+from css_html_js_minify.html_minifier import html_minify
+from css_html_js_minify.css_minifier import css_minify
+from css_html_js_minify.js_minifier import js_minify
 
 register = Library()
 
