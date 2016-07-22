@@ -2,10 +2,10 @@ import os
 
 HTML_MINIFY             = False
 DEBUG                   = True
-#SECURE_SSL_REDIRECT     = True
 SESSION_COOKIE_SECURE   = True
 CSRF_COOKIE_SECURE      = True
-#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT     = not DEBUG
+SECURE_PROXY_SSL_HEADER = DEBUG and None or ('HTTP_X_FORWARDED_PROTO', 'https')
 PROJECT_NAME            = 'agcs'
 BASE_DIR         = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_URLCONF     = PROJECT_NAME + '.urls'
@@ -23,12 +23,12 @@ STATIC_ROOT      = os.path.join('/var/tmp', PROJECT_NAME, 'assets', 'static')
 STATICFILES_DIRS = [
     ('assets', os.path.join(BASE_DIR, PROJECT_NAME, 'static'))
 ]
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-#         'LOCATION': '127.0.0.1:11211',
-#     }
-# }
+CACHES = DEBUG and None or {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -96,18 +96,30 @@ COMPANY = {
     },
 }
 
-#GOOGLE_API_KEY = ''
-#SECRET_KEY = ''
-#EMAIL_HOST = ''
-#EMAIL_PORT = ''
-#EMAIL_HOST_USER = ''
-#EMAIL_HOST_PASSWORD = ''
-#DATABASES = {}
-#RECAPTCHA_PRIVATE_KEY = ''
-#RECAPTCHA_PUBLIC_KEY = ''
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'no-reply@alphageek.xyz'
+EMAIL_USE_TLS = True
+RECAPTCHA_PUBLIC_KEY = '6Lee0iETAAAAAMWJvtke920SuJWxaNNpjmq8jEIm'
 
 try:
-    from .local_settings import *
+    from .local_settings import (
+        SECRET_KEY, DATABASES, GOOGLE_API_KEY,
+        EMAIL_HOST_PASSWORD, RECAPTCHA_PRIVATE_KEY,
+    )
+
+    DATABASES = DEBUG and {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    } or DATABASES
+
+    SECRET_KEY = (DEBUG and
+        '&qaeg(mBecauseitsmandatoryv@@n$if67ba-4e9&kk+j$$c+' or
+        SECRET_KEY
+    )
+
 except ImportError:
     pass
 
@@ -152,11 +164,3 @@ ANDROID_ICONS=[
         'type': 'image/png'
     },
 ]
-
-SECRET_KEY = '&qaeg(mBecauseitsmandatoryv@@n$if67ba-4e9&kk+j$$c+'
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
