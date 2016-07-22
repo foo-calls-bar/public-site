@@ -1,22 +1,12 @@
 import os
 
 HTML_MINIFY             = False
-DEBUG                   = False
-SECURE_SSL_REDIRECT     = True
+DEBUG                   = True
+#SECURE_SSL_REDIRECT     = True
 SESSION_COOKIE_SECURE   = True
 CSRF_COOKIE_SECURE      = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 PROJECT_NAME            = 'agcs'
-ALLOWED_HOSTS           = [
-    'alphageekcs.com',
-    'www.alphageekcs.com',
-    'secure.alphageekcs.com',
-    'www.secure.alphageekcs.com',
-    'alphageek.xyz',
-    'www.alphageek.xyz',
-    'secure.alphageek.xyz',
-    'www.secure.alphageek.xyz',
-]
 BASE_DIR         = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_URLCONF     = PROJECT_NAME + '.urls'
 EMAIL_USE_TLS    = True
@@ -29,16 +19,16 @@ USE_I18N         = True
 USE_L10N         = True
 USE_TZ           = True
 STATIC_URL       = '/static/'
-STATIC_ROOT      = os.path.join('/srv', PROJECT_NAME, 'assets', 'static')
+STATIC_ROOT      = os.path.join('/var/tmp', PROJECT_NAME, 'assets', 'static')
 STATICFILES_DIRS = [
     ('assets', os.path.join(BASE_DIR, PROJECT_NAME, 'static'))
 ]
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': '127.0.0.1:11211',
+#     }
+# }
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -123,6 +113,7 @@ except ImportError:
 
 from django.contrib.staticfiles.storage import staticfiles_storage
 
+
 ANDROID_ICONS=[
     {
         'density': '0.75',
@@ -161,3 +152,11 @@ ANDROID_ICONS=[
         'type': 'image/png'
     },
 ]
+
+SECRET_KEY = '&qaeg(mBecauseitsmandatoryv@@n$if67ba-4e9&kk+j$$c+'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}

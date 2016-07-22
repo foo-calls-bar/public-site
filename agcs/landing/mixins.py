@@ -24,7 +24,7 @@ class CSRFExemptMixin(object):
 
 
 class CacheMixin(object):
-    cache_timeout = 60
+    cache_timeout = 1
 
     def get_cache_timeout(self):
         return self.cache_timeout

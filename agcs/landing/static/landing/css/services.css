@@ -1,0 +1,30 @@
+a.list-group-item:hover,
+a.list-group-item:focus,
+a.list-group-item,
+a.list-group-item.last-clicked,
+ .list-group-item {
+  color: rgb(24, 188, 156);
+  font-weight: bold;
+}
+
+a.list-group-item:hover,
+a.list-group-item:focus,
+a.list-group-item.last-clicked {
+  background-color: rgb(44,62,80);
+}
+
+@media  (max-width: 768px) {
+  .table-of-contents {
+      text-align: center;
+  }
+
+  .list-group-item, a.list-group-item {
+      background-color: rgb(44, 62, 80);
+      border: 1px solid rgba(24, 188, 156, .34);
+  }
+
+  a.list-group-item.last-clicked {
+    background-color: rgb(24,188,156);
+    color: rgb(44,62,80);
+  }
+}

@@ -119,6 +119,10 @@ hr.star-primary:after {
     margin-top:1em;
 }
 
+.toc-title, .table-of-contents {
+    text-align: left;
+}
+
 blockquote.definition {
     font-size: medium;
 }
@@ -142,6 +146,9 @@ blockquote.definition {
     font-size: 18px;
   }
 
+  .toc-title, .table-of-contents {
+      text-align: center;
+  }
 }
 
 @media (min-width: 768px) {
