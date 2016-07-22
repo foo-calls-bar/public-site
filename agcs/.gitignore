@@ -63,3 +63,5 @@ target/
 static_dir/static/*
 !landing/templates/landing/parts/
 *.bak
+db.sqlite3
+
