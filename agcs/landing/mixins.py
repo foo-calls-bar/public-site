@@ -3,7 +3,7 @@ from django.utils.cache import patch_response_headers
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page, never_cache
 from django.views.decorators.csrf import csrf_exempt
-
+from django.conf import settings
 
 class NeverCacheMixin(object):
     @method_decorator(never_cache)
@@ -24,7 +24,7 @@ class CSRFExemptMixin(object):
 
 
 class CacheMixin(object):
-    cache_timeout = 1
+    cache_timeout = settings.DEBUG and 1 or 60
 
     def get_cache_timeout(self):
         return self.cache_timeout
