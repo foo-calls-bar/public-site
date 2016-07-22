@@ -32,8 +32,7 @@
       <div class="col-sm-8 col-sm-offset-1">
         {% for service in services %}
           {% with service|mkattribute as service_id %}
-          <div id="{{ service_id }}"></div>
-          <br>
+          <hr id="{{ service_id }}" class="service-tag">          
           <div class="service-div">
             <div class="page-header">
               <h2 class="text-center text-primary"><strong>{{ service }}</strong></h2>
@@ -42,6 +41,7 @@
               {% include "landing/services/"|add:service_id|add:".html" %}
             </div> <!-- bs-component -->
           </div> <!-- service-div -->
+          <br>
           {% endwith %}
           {% if forloop.counter0 == 0 %}
         </div> <!-- col-sm... -->

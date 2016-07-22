@@ -61,10 +61,10 @@ class AboutView(LandingPageView):
 class ServicesView(LandingPageView):
     template_name = 'landing/pages/services.html'
     services = [
-        'Backup Solutions','Custom Builds', 'Lessons',
-        'Mobile Devices','Networking','VPN Solutions',
-        'Planning/Consulting','New Device Setup',
-        'Viruses/Spyware','Maintenance','Repairs',
+        'VPN Solutions', 'Backup Solutions', 'Custom Builds',
+        'Networking', 'Mobile Devices', 'Lessons',
+        'Planning/Consulting', 'New Device Setup',
+        'Viruses/Spyware', 'Maintenance', 'Repairs',
     ]
 
     def get_context_data(self, **kwargs):

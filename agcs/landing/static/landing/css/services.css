@@ -1,3 +1,8 @@
+hr.service-tag {
+    border: 1em solid transparent;
+    margin: 0;
+}
+
 a.list-group-item:hover,
 a.list-group-item:focus,
 a.list-group-item,
