@@ -1,17 +1,58 @@
 {% extends 'landing/base.html' %}
 {% load staticfiles %}
+{% block canonical %}<link rel="canonical" href="https://alphageek.xyz" itemprop="url">{% endblock canonical %}
+
 {% block header %}
-{% include "landing/parts/header.html" with title="Computer Services" %}
-    <div class="container-fluid">
-      <div class="jumbotron" style="padding-bottom: 75px;">
-        <div class="row">
-          <div class="col-lg-12">
-            <img class="img-responsive" src="{% static 'assets/img/logo.png' %}" alt="AGCS">
-          </div>
-        <p class="lead">In-Shop • On-Site • Remote</p>
+  {% include "landing/parts/header.html" with title="Computer Services" %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <img class="img-responsive" src="{% static 'assets/img/logo.png' %}" height="300" width="300" alt="AGCS">
       </div>
+      <p class="lead">In-Shop • On-Site • Remote</p>
+    </div>
+  </div>
+{% endblock header %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="jumbotron">
+          <article>
+            <p class="lead">
+              We know how intimidating your computer can be, so let us help.
+              Why spend the day trying to solve your tech problems when our
+              experts can get you up and running in no time? Let us do the work
+              so you can get on with your life. We'll even come to you (
+              <abbr title="Dallas/Fort Worth Metroplex">DFW</abbr> residents only)!
+              <a href="{% url 'contact' %}"><u>Contact us</u></a> NOW to schedule
+              an appointment!
+            </p>
+          </article>
+        </div>
+        <div class="jumbotron">
+          <article>
+            <p class="lead">
+              Need help when you're out of town? Don't panic. As long as you have
+              a working internet connection, we still might be able to help. Simply
+              schedule an appointment for a remote-assistance-eligible <a href="{% url 'services' %}">
+              <u>service</u></a>, then follow our easy&nbsp;<abbr title="Virtual Private Network">VPN</abbr>
+              &nbsp;setup instructions, and one of our experts will connect to your computer over
+              our encrypted virtual network!
+            </p>
+          </article>
+        </div>
+        <div class="jumbotron">
+          <aside>
+            <p class="lead">
+              If you have a problem which requires a service that is not <a href="{% url 'services' %}">
+              <u>listed on our website</u></a>, please contact us and we will do our best to solve it, even if
+              that means referring you to one of our competitors.
+            </p>
+          </aside>
+        </div>
       </div>
     </div>
-{% endblock header %}
-{% block content %}{% endblock content %}
-{# margin: 0 auto 0; #}
+  </div>
+{% endblock content %}

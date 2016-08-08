@@ -60,6 +60,18 @@ class AboutView(LandingPageView):
 
 class ServicesView(LandingPageView):
     template_name = 'landing/pages/services.html'
+    services = [
+        'VPN Solutions', 'Backup Solutions', 'Custom Builds',
+        'Networking', 'Mobile Devices', 'Lessons',
+        'Planning/Consulting', 'New Device Setup',
+        'Viruses/Spyware', 'Maintenance', 'Repairs',
+    ]
+
+
+    def get_context_data(self, **kwargs):
+        context = super(ServicesView, self).get_context_data(**kwargs)
+        context.update({'services': self.services})
+        return context
 
 
 class ContactView(FormView, AutoTitleView):

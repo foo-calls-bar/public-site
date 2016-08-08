@@ -1,4 +1,14 @@
 {% load bootstrap3 %}
+{% load landing_utils %}
+<style>
+  div.form-group > button.btn {
+    margin-left: 1em;
+  }
+
+  textarea.form-control{
+    max-width: 100%;
+  }
+</style>
 {% csrf_token %}
-{% bootstrap_form form show_label=False form_group_class='form-group row' field_class='col-md-12' %}
+{% autofocus_form form show_label=False form_group_class='form-group row' field_class='col-md-12' %}
 {% buttons submit='Submit' reset="Cancel" %}{% endbuttons %}

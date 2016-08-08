@@ -19,6 +19,11 @@ footer {
   border-color: transparent;
 }
 
+footer hr {
+  width: 0;
+  margin: 10px 0;
+}
+
 footer > .container {
   padding-right: 15px;
   padding-left: 0px;
@@ -71,6 +76,10 @@ hr.star-primary:after {
   background-color: #ecf0f1;
 }
 
+div.social-buttons {
+    padding-top: 5px;
+}
+
 .social-buttons a.btn {
     padding: 10px 0px;
 }
@@ -92,6 +101,10 @@ hr.star-primary:after {
 
 .container .text-muted {
   margin: 20px 0;
+}
+
+.container .text-muted.copy-and-ref {
+    margin: 5px 0 15px 0;
 }
 
 .base-template {
@@ -119,6 +132,10 @@ hr.star-primary:after {
     margin-top:1em;
 }
 
+.toc-title, .table-of-contents {
+    text-align: left;
+}
+
 blockquote.definition {
     font-size: medium;
 }
@@ -129,29 +146,30 @@ blockquote.definition {
 }
 
 @media (max-width: 768px) {
-
   body {
-    padding-bottom: 12em;
+    padding-bottom: 16em;
   }
 
   footer {
-    height: 12em;
+    height: 16em;
   }
 
   header .jumbotron p {
     font-size: 18px;
   }
 
+  .toc-title, .table-of-contents {
+      text-align: center;
+  }
 }
 
 @media (min-width: 768px) {
-
   body {
-    padding-bottom: 13em;
+    padding-bottom: 16em;
   }
 
   footer {
-    height: 13em;
+    height: 16em;
   }
 
   footer > .container {
@@ -161,11 +179,9 @@ blockquote.definition {
   .company-addr {
     margin-top: 5px;
   }
-
 }
 
 @media (min-width: 992px) {
-
   body {
     padding-bottom: 5em;
   }
@@ -174,13 +190,14 @@ blockquote.definition {
     height: 5em;
   }
 
+  .container .text-muted.copy-and-ref {
+      margin: 15px 0 15px 0;
+  }
 }
 
 @media (min-width: 1200px) {
-
     .push-right-lg {
         padding-right: 0px;
         padding-left: 40px;
     }
-
 }

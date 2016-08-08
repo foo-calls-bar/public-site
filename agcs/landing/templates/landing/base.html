@@ -1,5 +1,4 @@
 {% extends 'landing/bootstrap.html' %}
-
 {% load staticfiles %}
 {% load bootstrap3 %}
 {% load cache %}
@@ -7,9 +6,8 @@
 {% load favicon %}
 
 {% block bootstrap3_extra_head %}
-
-  <meta name="keywords" content="Computers, computer repair, computer help">
-  <meta name="description" content="Alpha Geek Computer Services provides in-shop, on-site, and remote IT services">
+  <meta name="keywords" content="alpha geeks, computer assistance, computer fix, computer geeks, computer help, computer maintenance, computer problems, computer repair, computer repair services, computer service, computer services, computer support, computer tech help, computer tech support, computer troubleshooting, computer lessons, computer virus removal, fix computer, fix computer problems, fix my computer, fix my pc, geek computer repair, geek squad, home computer repair, home computer repair service, home computer service, home computer services, home computer support, home pc support, in home computer repair, it support, mobile computer repair, online computer help, pc computer repair, pc fix, pc repair, pc repair services, pc repair shop, pc support, remote computer repair, repair computer, repair my computer, virus removal">
+  <meta name="description" content="Alpha Geek Computer Services provides in-shop, on-site, and remote IT services. We are located in Plano, TX.">
   <meta name="author" content="Ryan Kaiser">
   <meta name="copyright" content="Alpha Geek Computer Services">
   <meta name="robots" content="all">
@@ -17,33 +15,46 @@
   <meta name="application-name" content="AGCS">
   <meta name="google-site-verification" content="aNcBkJyU-QbMhrf4qytgXNxjMZ3nkEzM6TdXGTTnRbY">
   <meta name="msvalidate.01" content="4A9ECC2E495C85CC9CC904F51D67E03A">
-  <meta property="og:description" content="Alpha Geek Computer Services provides in-shop, on-site, and remote IT services">
+  <meta property="og:description" content="Alpha Geek Computer Services provides in-shop, on-site, and remote IT services. We are located in Plano, TX.">
   {% get_favicons "assets/img/favicon/" %}
-  <meta name="theme-color" content="#0f0d0d">
-{% comment %}
-  <link rel="manifest" href="{% url 'android_manifest' %}">
-  <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/img/apple-touch-icon-57x57.png' %}">
-  <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/img/apple-touch-icon-60x60.png' %}">
-  <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/img/apple-touch-icon-72x72.png' %}">
-  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/apple-touch-icon-76x76.png' %}">
-  <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/img/apple-touch-icon-114x114.png' %}">
-  <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/img/apple-touch-icon-120x120.png' %}">
-  <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/img/apple-touch-icon-144x144.png' %}">
-  <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/img/apple-touch-icon-152x152.png' %}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/img/apple-touch-icon-180x180.png' %}">
-  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon-96x96.png' %}" sizes="96x96">
-  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon-16x16.png' %}" sizes="16x16">
-  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon-32x32.png' %}" sizes="32x32">
-  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon-194x194.png' %}" sizes="194x194">
-  <link rel="icon" type="image/png" href="{% static 'assets/img/android-chrome-192x192.png' %}" sizes="192x192">
-  <link rel="mask-icon" href="{% static 'assets/img/safari-pinned-tab.svg' %}" color="#5bbad5">
-  <link rel="shortcut icon" href="{% static 'assets/favicon.ico' %}">
-{% endcomment %}
+  <meta name="theme-color" content="#2c3e50">
+  {% block canonical %}<link rel="canonical" href="https://alphageek.xyz{% url title %}" itemprop="url">{% endblock canonical %}
   {% block page_extra_head %}{% endblock page_extra_head %}
-
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "LocalBusiness",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Plano",
+        "addressRegion": "TX",
+        "postalCode": "75093",
+        "streetAddress": "1727 Nest Place"
+      },
+      "name": "Alpha Geek Computer Services",
+      "description": "Alpha Geek Computer Services provides in-shop, on-site, and remote IT services.",
+      "alternateName": "Alpha Geeks",
+      "url": "https://alphageek.xyz",
+      "email": "root@alphageek.xyz",
+      "telephone": "{{ company.phone }}",
+      "logo": "https://alphageek.xyz{% static 'assets/img/logo.png' %}",
+      "sameAs": [
+        "{{ company.links.social.google_plus }}",
+        "{{ company.links.social.facebook }}"
+      ]
+    }
+  </script>
 {% endblock bootstrap3_extra_head %}
 
 {% block bootstrap3_content %}
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-N4BNCJ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-N4BNCJ');</script>
 
   <nav class="navbar navbar-inverse navbar-fixed-top">
     {% block navigation %}
@@ -66,14 +77,38 @@
   </footer>
 
   {% include 'landing/parts/scroll-top.html' %}
-
 {% endblock bootstrap3_content %}
 
 {% block bootstrap3_extra_script %}
-
   {% block page_extra_script %}{% endblock page_extra_script %}
+  <script>
+    $(function() {
+      $(document).scroll(function() {
+        if ($(window).scrollTop() > 100)
+          $('.scroll-top-wrapper').addClass('show');
+        else
+          $('.scroll-top-wrapper').removeClass('show');
+      });
+      $('.scroll-top-wrapper').click(scrollToTop);
+    });
 
-  <script async defer>{% inline_js_file 'assets/js/scroll-top-wrapper.js' %}</script>
-  <script async defer>{% inline_js_file 'landing/js/site-analytics.js' %}</script>
+    function scrollToTop() {
+      verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+      element = $('body');
+      offset = element.offset();
+      offsetTop = offset.top;
+      $('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+    }
+  </script>
 
+  <script>
+    $(document).ready(function() {
+      if ((/Mobile/i.test(navigator.appVersion) ||
+           /Mobile/i.test(navigator.userAgent)) &&
+         ! /IPad/i.test(navigator.userAgent))
+        $('#directions-link').attr('href', function() {
+          return /saddr/i.test(this) ? this : this + '&saddr=My%20location';
+        });
+      });
+  </script>
 {% endblock bootstrap3_extra_script %}

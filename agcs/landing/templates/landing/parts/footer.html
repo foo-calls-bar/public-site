@@ -1,26 +1,31 @@
+
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-3 social-buttons text-center">
+    <div class="col-md-4 social-buttons text-center">
       <a class="btn" href="{{ company.links.social.facebook }}" target="_blank">
         {% include 'landing/fa/stack.html' with type='facebook' tip='Like us on Facebook' %}
       </a>
       <a class="btn" href="{{ company.links.social.google_plus }}" target="_blank">
         {% include 'landing/fa/stack.html' with type='google-plus' tip=company.short_name|add:' on Google Plus' %}
       </a>
-      <a class="btn" href="mailto:{{ company.email }}" target="_blank">
-        {% include 'landing/fa/stack.html' with type='envelope' tip='Email Us' %}
+      <a class="btn" href="{{ company.links.social.yelp }}" target="_blank">
+        {% include 'landing/fa/stack.html' with type='yelp' tip='Yelp! Read reviews or write a new one' %}
       </a>
       <a class="btn" href="{{ company.links.social.google_maps }}" target="_blank">
         {% include 'landing/fa/stack.html' with type='map-marker' tip='Get Directions' %}
       </a>
+      <a class="btn" href="mailto:{{ company.email }}" target="_blank">
+        {% include 'landing/fa/stack.html' with type='envelope' tip='Email Us' %}
+      </a>
     </div>
-    <div class="col-md-4 col-md-offset-1 text-center">
-      <p class="text-muted">
+    <div class="col-md-4 text-center hidden-sm hidden-xs">
+      <p class="text-muted copy-and-ref">
         <span class="hidden-xs">&copy; {{ company.long_name }}<br></span>
         <a class="text-info small" href="https://m.do.co/c/9b25b239d056" target="_blank">Hosted By DigitalOcean</a>
       </p>
     </div>
-    <div class="col-md-4 text-center push-right-lg">
+    <hr class="visible-xs visible-sm">
+    <div class="col-md-4 text-center">
       <div clas="row">
         <div class="col-lg-5 col-lg-offset-7">
           <p class="company-addr">
@@ -29,6 +34,13 @@
           </p>
         </div>
       </div>
+    </div>
+    <hr class="visible-xs visible-sm">
+    <div class="col-md-4 text-center visible-sm visible-xs">
+      <p class="text-muted ">
+        <span class="">&copy; {{ company.long_name }}<br></span>
+        <a class="text-info small" href="https://m.do.co/c/9b25b239d056" target="_blank">Hosted By DigitalOcean</a>
+      </p>
     </div>
   </div>
 </div>

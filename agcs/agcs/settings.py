@@ -3,6 +3,7 @@ import os
 HTML_MINIFY             = False
 DEBUG                   = False
 SECURE_SSL_REDIRECT     = True
+SECURE_SSL_HOST         = 'alphageek.xyz'
 SESSION_COOKIE_SECURE   = True
 CSRF_COOKIE_SECURE      = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -96,12 +97,13 @@ COMPANY = {
     'email'      : 'root@alphageek.xyz',
     'addr'       : ['1727 Nest Pl.', 'Plano, TX 75093'],
     'long_name'  : 'Alpha Geek Computer Services',
-    'short_name' : 'Alpha Geeks',
+    'short_name' : 'Alpha Geek Services',
     'links' : {
         'social' : {
             'facebook'    : 'https://facebook.com/alphageekcs',
             'google_plus' : 'https://plus.google.com/+Ntxcomputerservices',
-            'google_maps' : 'https://maps.google.com?daddr=Alpha+Geek+Computer+Services+1727+Nest+Place+Plano+TX+75093'
+            'google_maps' : 'https://maps.google.com?daddr=Alpha+Geek+Computer+Services+1727+Nest+Place+Plano+TX+75093',
+            'yelp'        : 'https://www.yelp.com/biz/alpha-geek-computer-services-plano',
         },
     },
 }

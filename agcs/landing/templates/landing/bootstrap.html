@@ -1,32 +1,231 @@
 {% load staticfiles %}{% load landing_utils %}
 <!DOCTYPE html>
-<html{% if request.LANGUAGE_CODE %} lang="{{ request.LANGUAGE_CODE }}"{% endif %}>
+<html lang="{{ request.LANGUAGE_CODE|default:'en-US' }}">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block bootstrap3_title %}{{ company.long_name|title }}|{{ title|title }}{% endblock bootstrap3_title %}</title>
+  <title>{% block bootstrap3_title %}{{ company.long_name|title }} | {{ title|title }}{% endblock bootstrap3_title %}</title>
   <script>(function(a){var b=function(c,k,d){var l=a.document;var m=l.createElement("link");var e;if(k){e=k}else{var i=(l.body||l.getElementsByTagName("head")[0]).childNodes;e=i[i.length-1]}var f=l.styleSheets;m.rel="stylesheet";m.href=c;m.media="only x";function j(n){if(l.body){return n()}setTimeout(function(){j(n)})}j(function(){e.parentNode.insertBefore(m,(k?e:e.nextSibling))});var h=function(o){var n=m.href;var p=f.length;while(p--){if(f[p].href===n){return o()}}setTimeout(function(){h(o)})};function g(){if(m.addEventListener){m.removeEventListener("load",g)}m.media=d||"all"}if(m.addEventListener){m.addEventListener("load",g)}m.onloadcssdefined=h;h(g);return m};if(typeof exports!=="undefined"){exports.loadCSS=b}else{a.loadCSS=b}}(typeof global!=="undefined"?global:this));</script>
   <script async defer>loadCSS("https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css");</script>
   <script async defer>loadCSS("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css");</script>
-  <script async defer>loadCSS("{% static 'landing/css/landing.min.css' %}");</script>
+  <style>
+    html {
+      position: relative;
+      min-height: 100%;
+    }
+
+    body {
+      padding-top: 50px;
+    }
+
+    body > .container,
+    body > header {
+      padding: 20px 15px 0;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      border-color: transparent;
+    }
+
+    footer hr {
+      width: 0;
+      margin: 10px 0;
+    }
+
+    footer > .container {
+      padding-right: 15px;
+      padding-left: 0px;
+    }
+
+    .footer-default {
+        background-color: #149c82;
+    }
+
+    .footer-inverse {
+        background-color: #2c3e50;
+    }
+
+    header {
+        text-align: center;
+    }
+
+    header img {
+        display: block;
+        margin: 0 auto 0;
+    }
+
+    .img-centered {
+      margin: 0 auto;
+    }
+
+    hr.star-primary {
+      padding: 0;
+      border: none;
+      border-top: solid 5px;
+      text-align: center;
+      max-width: 250px;
+      margin: 25px auto 30px;
+      border-color: #2c3e50;
+    }
+
+    hr.star-primary:after {
+      content: "\f005";
+      font-family: FontAwesome;
+      display: inline-block;
+      position: relative;
+      top: -0.8em;
+      font-size: 2em;
+      padding: 0 0.25em;
+      background-color: white;
+      color: #2c3e50;
+    }
+
+    .jumbotron hr.star-primary:after {
+      background-color: #ecf0f1;
+    }
+
+    div.social-buttons {
+        padding-top: 5px;
+    }
+
+    .social-buttons a.btn {
+        padding: 10px 0px;
+    }
+
+    .social-buttons a.btn:hover,
+    .social-buttons a.btn:focus,
+    .social-buttons a.btn.focus {
+        color: #44596f;
+    }
+
+    .social-buttons a.company-number {
+        padding: 10px 5px;
+    }
+
+    .company-addr {
+      margin: 0 0 2px 0;
+      color: white;
+    }
+
+    .container .text-muted {
+      margin: 20px 0;
+    }
+
+    .container .text-muted.copy-and-ref {
+        margin: 5px 0 15px 0;
+    }
+
+    .base-template {
+      text-align: center;
+    }
+
+    .navbar-nav li.active a {
+        font-weight: bold;
+    }
+
+    .navbar-brand {
+        font-weight: bold;
+    }
+
+    .color-grid {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      background-color: #eee;
+      background-color: rgba(86,61,124,.15);
+      border: 1px solid #ddd;
+      border: 1px solid rgba(86,61,124,.2);
+    }
+
+    .table-of-contents {
+        margin-top:1em;
+    }
+
+    .toc-title, .table-of-contents {
+        text-align: left;
+    }
+
+    blockquote.definition {
+        font-size: medium;
+    }
+
+    .service .list-group .bullet-item {
+        padding: .5em;
+        margin-left: 2em;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: 16em;
+      }
+
+      footer {
+        height: 16em;
+      }
+
+      header .jumbotron p {
+        font-size: 18px;
+      }
+
+      .toc-title, .table-of-contents {
+          text-align: center;
+      }
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding-bottom: 16em;
+      }
+
+      footer {
+        height: 16em;
+      }
+
+      footer > .container {
+        padding-left: 15px;
+      }
+
+      .company-addr {
+        margin-top: 5px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      body {
+        padding-bottom: 5em;
+      }
+
+      footer {
+        height: 5em;
+      }
+
+      .container .text-muted.copy-and-ref {
+          margin: 15px 0 15px 0;
+      }
+    }
+
+    @media (min-width: 1200px) {
+        .push-right-lg {
+            padding-right: 0px;
+            padding-left: 40px;
+        }
+    }
+  </style>
   <!--[if lt IE 9]>
   <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
   {% block bootstrap3_extra_head %}{% endblock bootstrap3_extra_head %}
 </head>
-
-<body id="page-top" data-spy="scroll" data-target="#sidebar">
-
-  {% block bootstrap3_content %}
-    (No Content)
-  {% endblock bootstrap3_content %}
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="{% static 'assets/js/vendor/jquery.min.js' %}"><\/script>')</script>
+<body id="page-top">
+  {% block bootstrap3_content %}{% endblock bootstrap3_content %}
+  {#<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>#}
+  <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="{% static 'assets/js/vendor/jquery.min.js' %}"><\/script>');</script>
   <script async defer src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
   {% block bootstrap3_extra_script %}{% endblock bootstrap3_extra_script %}
 </body>
 </html>
