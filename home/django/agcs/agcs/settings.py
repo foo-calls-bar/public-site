@@ -104,6 +104,7 @@ COMPANY = {
             'google_plus' : 'https://plus.google.com/+Ntxcomputerservices',
             'google_maps' : 'https://maps.google.com?daddr=Alpha+Geek+Computer+Services+1727+Nest+Place+Plano+TX+75093',
             'yelp'        : 'https://www.yelp.com/biz/alpha-geek-computer-services-plano',
+            'github'      : 'https://github.com/alphageek-xyz',
         },
     },
 }
