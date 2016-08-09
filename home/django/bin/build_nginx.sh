@@ -1,9 +1,51 @@
 #!/bin/bash
 
+usage() {
+    cat <<EOF
+Usage: ${BASH_SOURCE##*/} [OPTIONS]
+Options:
+    -i            install nginx
+    -n <VERSION>  use nginx version=VERSION
+    -p <VERSION>  use nps version=VERSION
+    -t <PATH>     set nginx *temp-path build option to PATH
+    -b <PATH>     use PATH as the build directory
+    -d <PATH>     same as -b
+    -h            show this message and exit
+EOF
+}
+
 NPS_VERSION=1.11.33.2
 NGINX_VERSION=1.10.1
 TEMP_PATH=/var/local/lib/nginx
 BUILD_DIR=/tmp/ngx
+
+while getopts :in:p:t:b:d:h opt; do
+    case "$opt" in
+         i) install=true
+           ;;
+         n) NGINX_VERSION="$OPTARG"
+           ;;
+         p) NPS_VERSION="$OPTARG"
+           ;;
+         t) TEMP_PATH="$OPTARG"
+           ;;
+       b|d) BUILD_DIR="$OPTARG"
+           ;;
+         h) usage;
+            exit 0;
+           ;;
+         :) echo "option '-$OPTARG' requires an argument";
+            usage;
+            exit 1;
+           ;;
+        \?) echo "unknown option: '-$OPTARG'";
+            usage;
+            exit 2;
+           ;;
+    esac
+done
+
+shift $((OPTIND-1))
 
 FLAGS=(
     --user=www-data
@@ -41,17 +83,9 @@ insnginx() {
 }
 
 
-while getopts :i opt; do
-    case "$opt" in
-         i) install=true ;;
-        \?) echo "unknown option: $opt"; exit 1 ;;
-    esac
-done
-
-shift $((OPTIND-1))
-
 mkdir -p $TEMP_PATH
 mkdir -p $BUILD_DIR
 test -d $BUILD_DIR/ngx_pagespeed-release-${NPS_VERSION}-beta/psol || mkpagespeed
 mknginx
 $install && insnginx || exit 0
+
