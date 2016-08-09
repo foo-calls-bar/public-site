@@ -7,7 +7,6 @@ from django.views.generic.base import RedirectView
 from django.shortcuts import urlresolvers
 
 from landing.views import manifest_view
-from landing.urls import urlpatterns as landing_urlpatterns
 from .sitemaps import StaticViewSitemap
 
 from landing.views import (

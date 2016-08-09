@@ -6,7 +6,7 @@
         {% include 'landing/fa/stack.html' with type='facebook' tip='Like us on Facebook' %}
       </a>
       <a class="btn" href="{{ company.links.social.google_plus }}" target="_blank">
-        {% include 'landing/fa/stack.html' with type='google-plus' tip=company.short_name|add:' on Google Plus' %}
+        {% include 'landing/fa/stack.html' with type='google-plus' tip=company.long_name|add:' on Google Plus' %}
       </a>
       <a class="btn" href="{{ company.links.social.yelp }}" target="_blank">
         {% include 'landing/fa/stack.html' with type='yelp' tip='Yelp! Read reviews or write a new one' %}
