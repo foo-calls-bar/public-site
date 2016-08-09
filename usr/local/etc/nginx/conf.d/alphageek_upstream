@@ -1,1 +1,0 @@
-server unix:/var/tmp/gunicorn.sock fail_timeout=0;

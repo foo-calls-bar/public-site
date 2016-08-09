@@ -1,4 +1,0 @@
-location /.well-known/ {
-    root /srv/agcs/html;
-    allow all;
-}

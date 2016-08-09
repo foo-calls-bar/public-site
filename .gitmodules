@@ -1,0 +1,12 @@
+[submodule "nginx"]
+	path = nginx
+	url = git@github.com:alphageek-xyz/nginx.git
+[submodule "bin"]
+	path = bin
+	url = git@github.com:alphageek-xyz/bin.git
+[submodule "site"]
+	path = site
+	url = git@github.com:alphageek-xyz/site.git
+[submodule "systemd"]
+	path = systemd
+	url = git@github.com:alphageek-xyz/systemd.git
