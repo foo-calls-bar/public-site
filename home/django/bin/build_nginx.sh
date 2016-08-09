@@ -4,7 +4,7 @@ usage() {
     cat <<EOF
 Usage: ${BASH_SOURCE##*/} [OPTIONS]
 Options:
-    -i            install nginx
+    -i            also install nginx
     -n <VERSION>  use nginx version=VERSION
     -p <VERSION>  use nps version=VERSION
     -f <FLAG>     pass additional build option FLAG to configure
