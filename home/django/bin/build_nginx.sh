@@ -7,6 +7,7 @@ Options:
     -i            install nginx
     -n <VERSION>  use nginx version=VERSION
     -p <VERSION>  use nps version=VERSION
+    -f <FLAG>     pass additional build option FLAG to configure
     -t <PATH>     set nginx *temp-path build option to PATH
     -b <PATH>     use PATH as the build directory
     -d <PATH>     same as -b
@@ -18,8 +19,9 @@ NPS_VERSION=1.11.33.2
 NGINX_VERSION=1.10.1
 TEMP_PATH=/var/local/lib/nginx
 BUILD_DIR=/tmp/ngx
+declare -a FLAGS
 
-while getopts :in:p:t:b:d:h opt; do
+while getopts :in:p:t:b:d:f:h opt; do
     case "$opt" in
          i) install=true
            ;;
@@ -28,6 +30,8 @@ while getopts :in:p:t:b:d:h opt; do
          p) NPS_VERSION="$OPTARG"
            ;;
          t) TEMP_PATH="$OPTARG"
+           ;;
+         f) FLAGS+=("$OPTARG")
            ;;
        b|d) BUILD_DIR="$OPTARG"
            ;;
@@ -47,7 +51,7 @@ done
 
 shift $((OPTIND-1))
 
-FLAGS=(
+FLAGS+=(
     --user=www-data
     --group=www-data
     --http-client-body-temp-path=$TEMP_PATH/body
