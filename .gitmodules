@@ -10,6 +10,3 @@
 [submodule "systemd"]
 	path = systemd
 	url = git@github.com:alphageek-xyz/systemd.git
-[submodule "srv"]
-	path = srv
-	url = git@github.com:alphageek-xyz/srv.git
