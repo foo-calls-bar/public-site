@@ -6,9 +6,9 @@ AGCS Website
 	:target: https://travis-ci.org/alphageek-xyz/site
 	:alt: Build status
 
-.. image:: https://img.shields.io/codecov/c/github/alphageek-xyz/site.svg?style=flat-square
-	:target: https://codecov.io/gh/alphageek-xyz/site
-	:alt: Codecov status
+.. image:: https://img.shields.io/coveralls/alphageek-xyz/site.svg?style=flat-square
+	:target: https://coveralls.io/github/alphageek-xyz/site
+	:alt: Coveralls status
 
 Our site_ runs on a cluster of Ubuntu 16.04 DigitalOcean_ droplets and utilizes the `Django Web Framework`__
 
